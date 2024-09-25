@@ -1,43 +1,22 @@
-import {useState} from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-
-function App() {
-    const [count, setCount] = useState(0)
-    const [belowTen, setBelowTen] = useState(count < 10);
-
-    return (
-        <>
-            <div>
-                <a href="https://vitejs.dev" target="_blank">
-                    <img src={viteLogo} className="logo" alt="Vite logo"/>
-                </a>
-                <a href="https://react.dev" target="_blank">
-                    <img src={reactLogo} className="logo react" alt="React logo"/>
-                </a>
-            </div>
-            <h1>Vite + React</h1>
-            <div className="card">
-                <button onClick={() => {
-                    setCount((count) => count + 1)
-                    setBelowTen(count < 10);
-                }}>
-                    count is {count}
-                </button>
-                <p>previous count was {count - 1}</p>
-
-                <p>Count is {belowTen ? "" : "NOT"} below ten</p>
-
-                <p>
-                    Edit <code>src/App.jsx</code> and save to test HMR
-                </p>
-            </div>
-            <p className="read-the-docs">
-                Click on the Vite and React logos to learn more
-            </p>
-        </>
-    )
+const App = ({ name, color = null, onNameClick = () => { } }) => {
+    return <>
+        <h1>Benvenuti in ReactJs!</h1>
+        <h2>Ciao <span onClick={onNameClick} style={
+            {
+                color: color ?? "red"
+            }
+        }>{name}</span>, come va?</h2>
+    </>;
 }
+
+export const PrimaryButton = ({ text, handleClick }) => <button
+    onClick={handleClick}
+    style={
+        {
+            "backgroundColor": "blue",
+            "borderRadius": "10px",
+        }
+    }
+>{text}</button>
 
 export default App
